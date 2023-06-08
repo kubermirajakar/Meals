@@ -19,7 +19,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  transparent_image: ^2.0.1
+  # google_fonts: ^5.0.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
