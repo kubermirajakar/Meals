@@ -48,16 +48,17 @@ class _BottomNavigationTabState extends State<BottomNavigationTab> {
     });
   }
 
-  void onSelectDrawerOption(String msg) {
+  void onSelectDrawerOption(String msg) async {
     if (msg == 'meals') {
       Navigator.of(context).pop();
     } else {
       Navigator.of(context).pop();
-      Navigator.of(context).push(
+      final result = await Navigator.of(context).push<Map<Filter, bool>>(
         MaterialPageRoute(
           builder: (ctx) => FilteredSCreen(),
         ),
       );
+      print(result);
     }
   }
 
