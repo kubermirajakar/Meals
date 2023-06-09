@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/screen/BottomNavigationTabs.dart';
 
 import 'package:meals/screen/CategoriesScreen.dart';
 import 'package:meals/screen/MealScreen.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: categoriesSceen(),
+      home: BottomNavigationTab(),
       // home: MealScreen(meals: [], title: 'Hello'),
     );
   }
