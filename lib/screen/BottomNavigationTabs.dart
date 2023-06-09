@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/screen/CategoriesScreen.dart';
+import 'package:meals/screen/FilteredScreen.dart';
 import 'package:meals/screen/MealScreen.dart';
+import 'package:meals/widgets/Drawer.dart';
 
 class BottomNavigationTab extends StatefulWidget {
   @override
@@ -46,6 +48,19 @@ class _BottomNavigationTabState extends State<BottomNavigationTab> {
     });
   }
 
+  void onSelectDrawerOption(String msg) {
+    if (msg == 'meals') {
+      Navigator.of(context).pop();
+    } else {
+      Navigator.of(context).pop();
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (ctx) => FilteredSCreen(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget currentScreen = categoriesSceen(
@@ -65,61 +80,7 @@ class _BottomNavigationTabState extends State<BottomNavigationTab> {
       appBar: AppBar(
         title: Text(activePageTite),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            DrawerHeader(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Theme.of(context).colorScheme.primaryContainer,
-                    Theme.of(context)
-                        .colorScheme
-                        .primaryContainer
-                        .withOpacity(.8),
-                  ],
-                ),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.fastfood, size: 30),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    'Cooking Up!',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: Theme.of(context).colorScheme.primary),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.restaurant,
-                  size: 25, color: Theme.of(context).colorScheme.onBackground),
-              title: Text(
-                'Meals',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.restaurant,
-                  size: 25, color: Theme.of(context).colorScheme.onBackground),
-              title: Text(
-                'Meals',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground),
-              ),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
+      drawer: MainDrawer(onSelectDrawerOption: onSelectDrawerOption),
       body: currentScreen,
       bottomNavigationBar: BottomNavigationBar(
         onTap: selectedCategory,
