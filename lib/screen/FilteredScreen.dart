@@ -5,6 +5,10 @@ import 'package:meals/widgets/Drawer.dart';
 enum Filter { gluttenFree, lactoseFree, vegetarian, vegan }
 
 class FilteredSCreen extends StatefulWidget {
+  FilteredSCreen({super.key, required this.selectedFilters});
+
+  Map<Filter, bool> selectedFilters;
+
   @override
   State<FilteredSCreen> createState() {
     return _FilteredScreenState();
@@ -16,6 +20,16 @@ class _FilteredScreenState extends State<FilteredSCreen> {
   var _LactoseFreeFilterSet = false;
   var _VegetarianFilterSet = false;
   var _veganFilterSet = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _GluttenFreeFilterSet = widget.selectedFilters[Filter.gluttenFree]!;
+    _LactoseFreeFilterSet = widget.selectedFilters[Filter.lactoseFree]!;
+    _VegetarianFilterSet = widget.selectedFilters[Filter.vegetarian]!;
+    _veganFilterSet = widget.selectedFilters[Filter.vegan]!;
+  }
 
   @override
   Widget build(BuildContext context) {

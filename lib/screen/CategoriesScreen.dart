@@ -5,12 +5,15 @@ import 'package:meals/models/meal.dart';
 import 'package:meals/screen/MealScreen.dart';
 import 'package:meals/widgets/category_grid_item.dart';
 
-class categoriesSceen extends StatelessWidget {
-  const categoriesSceen({super.key, required this.addFavoriteMeal});
+class CategoriesSceen extends StatelessWidget {
+  const CategoriesSceen(
+      {super.key, required this.addFavoriteMeal, required this.availableMeals});
+
+  final List<Meal> availableMeals;
 
   final void Function(Meal meal) addFavoriteMeal;
   void _selectCategory(BuildContext context, CategoryModel categoryModel) {
-    final filteredMeals = dummyMeals
+    final filteredMeals = availableMeals
         .where((meal) => meal.categories.contains(categoryModel.id))
         .toList();
 
