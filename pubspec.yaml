@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   transparent_image: ^2.0.1
+  flutter_riverpod: ^1.0.4
   # google_fonts: ^5.0.0
   
 dev_dependencies:
