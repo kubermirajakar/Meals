@@ -28,7 +28,10 @@ class MealItemScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(meal.imageUrl),
+            Hero(
+              tag: meal.id,
+              child: Image.network(meal.imageUrl),
+            ),
             SizedBox(
               height: 16,
             ),
